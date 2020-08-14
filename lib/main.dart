@@ -1,32 +1,49 @@
-import 'package:coach_better/UI/welcome_screen.dart';
+import 'package:coach_better/Routes/routing_constants.dart';
+import 'package:coach_better/Theme/app_theme.dart';
+import 'package:coach_better/locator.dart';
 import 'package:flutter/material.dart';
+import 'package:coach_better/Routes/router.dart' as router;
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  setuplocator();
+  runApp(MyApp());
+}
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isloggedIn = false;
+  SharedPreferences sharedPreferences;
+  Future user;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _checkloggedIn();
+    super.initState();
+  }
+
+  Future<void> _checkloggedIn() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    var token = sharedPreferences.getString('token');
+    if (token != null) {
+      setState(() {
+        _isloggedIn = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    const MaterialColor DarkGreen = const MaterialColor(
-      0xFF186064,
-      const <int, Color>{100: const Color(0xFF186064)},
-    );
-      const MaterialColor LightGreen = const MaterialColor(
-      0xFF3ba374,
-      const <int, Color>{100: const Color(0xFF3ba374)},
-    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CoachBetter',
-      theme: ThemeData(
-        primaryColor: DarkGreen,
-        accentColor: LightGreen,
-        textTheme: TextTheme(
-          title: TextStyle(
-              fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-      ),
-      home: WelcomeScreen(),
+      theme: coachAppTheme,
+      onGenerateRoute: router.generateRoute,
+      initialRoute: WelcomeViewRoute,
     );
   }
 }
