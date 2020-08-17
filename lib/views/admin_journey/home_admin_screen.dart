@@ -61,7 +61,7 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
                 padding:
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.21,
+                  height: MediaQuery.of(context).size.height * 0.22,
                   width: MediaQuery.of(context).size.width,
                   child: Card(
                     elevation: 5,
@@ -228,7 +228,7 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
                 padding:
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.21,
+                  height: MediaQuery.of(context).size.height * 0.22,
                   width: MediaQuery.of(context).size.width,
                   child: Card(
                     elevation: 5,
@@ -371,7 +371,7 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
                 padding:
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.21,
+                  height: MediaQuery.of(context).size.height * 0.22,
                   width: MediaQuery.of(context).size.width,
                   child: Card(
                     elevation: 5,

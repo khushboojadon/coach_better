@@ -1,5 +1,5 @@
+import 'package:coach_better/ViewModels/base_model.dart';
 import 'package:coach_better/locator.dart';
-import 'package:coach_better/view_models/base_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

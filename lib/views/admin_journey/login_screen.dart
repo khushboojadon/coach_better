@@ -1,6 +1,6 @@
 import 'package:coach_better/Routes/routing_constants.dart';
-import 'package:coach_better/view_models/base_model.dart';
-import 'package:coach_better/view_models/login_view_model.dart';
+import 'package:coach_better/ViewModels/base_model.dart';
+import 'package:coach_better/ViewModels/login_view_model.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:coach_better/widget/button.dart';
 import 'package:coach_better/widget/text_field.dart';

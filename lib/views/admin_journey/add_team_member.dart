@@ -243,9 +243,9 @@
 // }
 
 import 'package:coach_better/Routes/routing_constants.dart';
+import 'package:coach_better/ViewModels/base_model.dart';
+import 'package:coach_better/ViewModels/players_view_model.dart';
 import 'package:coach_better/models/players_model.dart';
-import 'package:coach_better/view_models/base_model.dart';
-import 'package:coach_better/view_models/players_view_model.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:flutter/material.dart';
 

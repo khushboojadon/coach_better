@@ -1,6 +1,6 @@
+import 'package:coach_better/ViewModels/base_model.dart';
 import 'package:coach_better/locator.dart';
 import 'package:coach_better/services/authentication_service.dart';
-import 'package:coach_better/view_models/base_model.dart';
 
 class LoginViewModel extends BaseModel {
   final AuthenticationService _authenticationService =

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:coach_better/models/players_model.dart';
 import 'package:coach_better/services/network.dart';
 import 'package:coach_better/utils/Urls.dart';
@@ -34,7 +37,38 @@ class PlayerService {
     return player;
   }
 
-  Future<void> addplayer(
+  // Future<void> addplayer(
+  //     // var image,
+  //     String position,
+  //     String subposition,
+  //     String firstname,
+  //     String lastname,
+  //     String foot,
+  //     int number,
+  //     String gender,
+  //     String tag) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int teamId = prefs.getInt('teamId');
+
+  //   FormData data = FormData.fromMap({
+  //     "team_id": teamId,
+  //     // "image": await MultipartFile.fromFile(image.path, filename: image),
+  //     "position": position,
+  //     "sub_position": subposition,
+  //     "first_name": firstname,
+  //     "last_name": lastname,
+  //     "foot": foot,
+  //     "number": number,
+  //     "gender": gender,
+  //     "tag": tag
+  //   });
+  //   final response = await _network.dio.post(
+  //     "$ADD_PLAYERS_URL",
+  //     data: data,
+  //   );
+  // }
+
+  Future<bool> addplayer(
       // var image,
       String position,
       String subposition,
@@ -46,8 +80,7 @@ class PlayerService {
       String tag) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int teamId = prefs.getInt('teamId');
-
-    FormData data = FormData.fromMap({
+    FormData requestbody = FormData.fromMap({
       "team_id": teamId,
       // "image": await MultipartFile.fromFile(image.path, filename: image),
       "position": position,
@@ -59,10 +92,37 @@ class PlayerService {
       "gender": gender,
       "tag": tag
     });
+    // var requestbody = {
+    //   "team_id": teamId,
+    //   // "image": await MultipartFile.fromFile(image.path, filename: image),
+    //   "position": position,
+    //   "sub_position": subposition,
+    //   "first_name": firstname,
+    //   "last_name": lastname,
+    //   "foot": foot,
+    //   "number": number,
+    //   "gender": gender,
+    //   "tag": tag
+    // };
     final response = await _network.dio.post(
       "$ADD_PLAYERS_URL",
-      data: data,
+      data: requestbody,
+      // options: Options(
+      //     followRedirects: false,
+      //     validateStatus: (status) {
+      //       return status < 500;
+      //     }),
+      options: Options(
+          followRedirects: false,
+          validateStatus: (status) {
+            return status < 500;
+          }
+          ),
     );
+    if (response.statusCode == 201) {
+      return true;
+    }
+    return false;
   }
 
   Future<bool> deletePlayer(int playerId) async {

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:coach_better/models/user_model.dart';
 import 'package:coach_better/services/network.dart';
 import 'package:coach_better/utils/Urls.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication {
@@ -34,6 +37,19 @@ class Authentication {
     });
     return response;
   }
+
+  // Future<bool> login(String email, String password) async {
+  //   setuserdetail(email);
+  //   final response =
+  //       await http.post("$LOGIN_URL?email=$email&password=$password");
+  //   if (response.statusCode == 200) {
+  //     var token = User.fromJson(json.decode(response.body)).accessToken;
+  //     print(token);
+  //     settoken(token);
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   Future<void> logout() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
