@@ -165,12 +165,12 @@ class HomePage extends State<LoginScreen> {
                       width: MediaQuery.of(context).size.width,
                       height: 55.0,
                       child: Button('Login', onPressed: () async {
-                        var loginsuccess = await model.login(
+                         await model.login(
                             emailController.text, passwordController.text);
-                        if (loginsuccess) {
+                      
                           Navigator.pushNamedAndRemoveUntil(
                               context, TeamViewRoute, (route) => false);
-                        }
+                    
                         // setState(() {
                         //   _isloading = true;
                         //   setuserdetails(emailController.text);

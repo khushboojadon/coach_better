@@ -26,9 +26,10 @@ class Authentication {
         .then((response) {
       if (response.statusCode == 200) {
         var token = User.fromJson(_network.decodeResp(response)).accessToken;
-
-        settoken(token);
-        return User.fromJson(_network.decodeResp(response));
+        if (token != null) {
+          settoken(token);
+          return User.fromJson(_network.decodeResp(response));
+        }
       } else {
         return User();
       }
@@ -37,6 +38,28 @@ class Authentication {
     });
     return response;
   }
+
+  // Future<User> login(String email, String password) async {
+  //   setuserdetail(email);
+  //   var response = await http
+  //       .post("$LOGIN_URL?email=$email&password=$password")
+  //       .then((response) {
+  //     if (response.statusCode == 200) {
+  //       var token=User.fromJson(json.decode(response.body)).accessToken;
+  //     //  var token = User.fromJson(_network.decodeResp(response)).accessToken;
+  //       if (token != null) {
+  //         settoken(token);
+  //        // return User.fromJson(_network.decodeResp(response));
+  //        return User.fromJson(json.decode(response.body));
+  //       }
+  //     } else {
+  //       return User();
+  //     }
+  //   }).catchError((error) {
+  //     return User();
+  //   });
+  //   return response;
+  // }
 
   // Future<bool> login(String email, String password) async {
   //   setuserdetail(email);

@@ -7,11 +7,11 @@ import 'package:coach_better/widget/text_field.dart';
 import 'package:flutter/material.dart';
 
 class AddPlayer extends StatelessWidget {
-  final TextEditingController _firstname = new TextEditingController();
-  final TextEditingController _lastname = new TextEditingController();
-  final TextEditingController _phone = new TextEditingController();
-  final TextEditingController _email = new TextEditingController();
-  final TextEditingController _number = new TextEditingController();
+  final TextEditingController _firstname = TextEditingController(text: 'abc');
+  final TextEditingController _lastname = TextEditingController(text: 'jadon');
+  final TextEditingController _phone = TextEditingController(text: '879867586');
+  final TextEditingController _email = TextEditingController(text: 'khush@gmail.com');
+  final TextEditingController _number = TextEditingController(text: '03');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

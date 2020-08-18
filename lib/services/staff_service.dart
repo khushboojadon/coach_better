@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class StaffService {
   Network _network = Network();
 
-  var allstaff = List<Staff>();
+ // var allstaff = List<Staff>();
   // Future<List<Staff>> fetchallstaff() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   int teamid = prefs.getInt('teamId');

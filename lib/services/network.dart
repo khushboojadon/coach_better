@@ -21,8 +21,9 @@ class Network {
 
   Dio get dio {
     Dio dio = new Dio();
-    dio.options.connectTimeout = 20000;
-    dio.options.connectTimeout = 20000;
+   // dio.options.connectTimeout = 20000;
+    dio.options.headers['content-Type'] = 'application/x-www-form-urlencoded';
+    
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -31,11 +32,14 @@ class Network {
         options.headers["Authorization"] = "Bearer " + token;
       }
       return options;
-    }, onResponse: (Response response) async {
+    }, 
+    onResponse: (Response response) async {
       return response;
     }, onError: (DioError error) async {
       return error;
     }));
     return dio;
   }
+
+ 
 }
