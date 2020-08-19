@@ -144,7 +144,7 @@ class _VideoRoomState extends State<VideoRoom> {
                                   SizedBox(height: 10.0),
                                   CachedNetworkImage(
                                     width: MediaQuery.of(context).size.width,
-                                    height: 250.0,
+                                    height: 150.0,
                                     fit: BoxFit.contain,
                                     imageUrl:
                                         snapshot.data.data[index].thumbnailUrl,

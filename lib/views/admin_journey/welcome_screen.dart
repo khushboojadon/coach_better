@@ -58,25 +58,9 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushNamed(context, LoginViewRoute);
                           },
                         ),
-                        // child: RaisedButton(
-                        //   shape: new RoundedRectangleBorder(
-                        //       borderRadius: new BorderRadius.circular(4.0),
-                        //       side: BorderSide(color: Colors.white)),
-                        //   onPressed: () {
-                        //     // Navigator.push(
-                        //     //     context,
-                        //     //     new MaterialPageRoute(
-                        //     //         builder: (context) => new LoginScreen()));
-                        //     Navigator.pushNamed(context, "/login");
-                        //   },
-                        //   color: Theme.of(context).accentColor,
-                        //   child: Text(
-                        //     'Login',
-                        //     style: Theme.of(context).textTheme.button,
-                        //   ),
-                        // ),
                       ),
-                    )), // signup button
+                    )),
+                // signup button
                 FadeAnimation(
                     4,
                     Container(
@@ -90,21 +74,6 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushNamed(context, "/sign_up");
                           },
                         ),
-                        // child: RaisedButton(
-                        //   shape: new RoundedRectangleBorder(
-                        //       borderRadius: new BorderRadius.circular(4.0),
-                        //       side: BorderSide(color: Colors.white)),
-                        //   onPressed: () {
-                        //     // Navigator.push(
-                        //     //     context,
-                        //     //     new MaterialPageRoute(
-                        //     //         builder: (context) => new SignupScreen()));
-                        //     Navigator.pushNamed(context, "/sign_up");
-                        //   },
-                        //   color: Theme.of(context).accentColor,
-                        //   child: Text('Sign-Up',
-                        //       style: Theme.of(context).textTheme.button),
-                        // ),
                       ),
                     )),
               ],

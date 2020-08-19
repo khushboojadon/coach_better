@@ -1,5 +1,3 @@
-
-import 'package:coach_better/widget/member_drawer.dart';
 import 'package:flutter/material.dart';
 
 class CalenderViewMember extends StatefulWidget {
@@ -27,7 +25,7 @@ class _CalenderViewMemberState extends State<CalenderViewMember> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-   //   backgroundColor: Theme.of(context).primaryColor,
+      //   backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -35,7 +33,7 @@ class _CalenderViewMemberState extends State<CalenderViewMember> {
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
-      drawer: MemberDrawerScreen(),
+      // drawer: MemberDrawerScreen(),
       body: SafeArea(
         child: Column(
           children: <Widget>[

@@ -13,53 +13,18 @@ class LoginScreen extends StatefulWidget {
 class HomePage extends State<LoginScreen> {
   final emailController = TextEditingController(text: 'admin@pixel-plus.ch');
   final passwordController = TextEditingController(text: 'cGFzc3dvcmQ');
-  String errormessage;
-  // bool _isloading = true;
-  // Future<void> setuserdetails(String email) async {
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString('email', email);
-  // }
 
   @override
   void dispose() {
-// Clean up the controller when the widget is disposed.
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
 
-  // signIn(String email, String password) async {
-  //   var response = await login(email, password);
-  //   if (response.accessToken != null) {
-  //     setState(() {
-  //       _isloading = false;
-
-  //       Navigator.of(context).pushNamedAndRemoveUntil(
-  //           TeamViewRoute, (Route<dynamic> route) => false);
-  //     });
-  //   } else {
-  //     setState(() {
-  //       _isloading = false;
-  //     });
-  //     showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return AlertDialog(
-  //             title: Text("Login failed"),
-  //             content: Text("Email/password id incorrect"),
-  //           );
-  //         });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // return ChangeNotifierProvider<LoginViewModel>(
-    //   create: (context) => locator<LoginViewModel>(),
-    //   child: Consumer<LoginViewModel>(
     return BaseView<LoginViewModel>(
       builder: (context, model, child) => Scaffold(
-          //    backgroundColor: Theme.of(context).primaryColor,
           body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -93,31 +58,6 @@ class HomePage extends State<LoginScreen> {
               padding:
                   const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
               child: Container(
-                //    height: 55.0,
-                // child: TextFormField(
-                //   controller: emailController,
-                //   validator: (value) {
-                //     if (value.isEmpty) {
-                //       return 'Please enter eamil';
-                //     }
-                //     return null;
-                //   },
-                //   style: Theme.of(context).textTheme.bodyText1,
-                //   decoration: InputDecoration(
-                //     fillColor: Colors.white,
-                //     filled: true,
-                //     labelText: 'Email',
-                //     labelStyle: Theme.of(context).textTheme.bodyText1,
-                //     border: OutlineInputBorder(
-                //       borderSide: BorderSide(
-                //           color: Theme.of(context).primaryColor, width: 5.0),
-                //     ),
-                //     enabledBorder: OutlineInputBorder(
-                //       borderSide: BorderSide(
-                //           color: Theme.of(context).primaryColor, width: 2.0),
-                //     ),
-                //   ),
-                // ),
                 child: UserTextField(
                   textController: emailController,
                   hintText: 'Email',
@@ -128,7 +68,6 @@ class HomePage extends State<LoginScreen> {
               padding:
                   const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
               child: Container(
-                //    height: 55.0,
                 child: TextFormField(
                   obscureText: true,
                   controller: passwordController,
@@ -165,39 +104,11 @@ class HomePage extends State<LoginScreen> {
                       width: MediaQuery.of(context).size.width,
                       height: 55.0,
                       child: Button('Login', onPressed: () async {
-                         await model.login(
+                        await model.login(
                             emailController.text, passwordController.text);
-                      
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, TeamViewRoute, (route) => false);
-                    
-                        // setState(() {
-                        //   _isloading = true;
-                        //   setuserdetails(emailController.text);
-                        // //  signIn(emailController.text, passwordController.text);
-                        // });
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, TeamViewRoute, (route) => false);
                       }),
-                      // child: RaisedButton(
-                      //   shape: new RoundedRectangleBorder(
-                      //       borderRadius: new BorderRadius.circular(4.0),
-                      //       side: BorderSide(color: Colors.white)),
-                      //   onPressed: () {
-                      //     setState(() {
-                      //       _isloading = true;
-
-                      //       setuserdetails(emailController.text);
-                      //       signIn(emailController.text, passwordController.text);
-                      //     });
-                      //   },
-                      //   color: Theme.of(context).accentColor,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(15.0),
-                      //     child: Text(
-                      //       'Login',
-                      //       style: Theme.of(context).textTheme.button,
-                      //     ),
-                      //   ),
-                      // ),
                     ),
                   )
           ]),

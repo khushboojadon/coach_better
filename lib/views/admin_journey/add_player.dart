@@ -5,13 +5,105 @@ import 'package:coach_better/views/base_view.dart';
 import 'package:coach_better/widget/button.dart';
 import 'package:coach_better/widget/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddPlayer extends StatelessWidget {
+class AddPlayer extends StatefulWidget {
+  @override
+  _AddPlayerState createState() => _AddPlayerState();
+}
+
+class _AddPlayerState extends State<AddPlayer> {
   final TextEditingController _firstname = TextEditingController(text: 'abc');
+
   final TextEditingController _lastname = TextEditingController(text: 'jadon');
+
   final TextEditingController _phone = TextEditingController(text: '879867586');
-  final TextEditingController _email = TextEditingController(text: 'khush@gmail.com');
+
+  final TextEditingController _email =
+      TextEditingController(text: 'khush@gmail.com');
+
   final TextEditingController _number = TextEditingController(text: '03');
+  var img;
+  _opencamera(BuildContext context) async {
+    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    Navigator.of(context).pop();
+    this.setState(() {
+      img = picture;
+    });
+  }
+
+  _opengallery(BuildContext context) async {
+    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    Navigator.of(context).pop();
+    this.setState(() {
+      img = picture;
+    });
+  }
+
+  Widget _image() {
+    if (img == null) {
+      return Container(
+        decoration: BoxDecoration(
+            border:
+                Border.all(color: Theme.of(context).primaryColor, width: 2)),
+        width: 150,
+        height: 150,
+        child: Center(
+            child: Text(
+          'Upload Profile',
+          style: Theme.of(context).textTheme.bodyText1,
+        )),
+      );
+    } else {
+      return Container(
+        decoration: BoxDecoration(
+            border:
+                Border.all(color: Theme.of(context).primaryColor, width: 2)),
+        child: Image.file(
+          img,
+          width: 150,
+          height: 150,
+          fit: BoxFit.cover,
+        ),
+      );
+    }
+  }
+
+  Future<void> _showdialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(
+                'Make a choice!',
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    GestureDetector(
+                        onTap: () {
+                          _opengallery(context);
+                        },
+                        child: Text(
+                          'Gallery',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: GestureDetector(
+                          onTap: () {
+                            _opencamera(context);
+                          },
+                          child: Text('camera',
+                              style: Theme.of(context).textTheme.bodyText2)),
+                    )
+                  ],
+                ),
+              ));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +134,13 @@ class AddPlayer extends StatelessWidget {
                         width: 0,
                         height: 0,
                       ),
-                      //  _image(),
+                      _image(),
                       Positioned(
                         top: 100,
                         left: 100,
                         child: IconButton(
                             onPressed: () {
-                              //  _showdialog(context);
+                              _showdialog(context);
                             },
                             icon: Icon(
                               Icons.add_a_photo,
@@ -303,39 +395,23 @@ class AddPlayer extends StatelessWidget {
                               'Save',
                               onPressed: () async {
                                 var success = await model.addPlayer(
-                                    //_selectedposition,
+                                  
                                     model.selectedposition.toString(),
                                     model.selectedSubPosition.toString(),
-                                    //   _selectedsubposition,
                                     _firstname.text,
                                     _lastname.text,
                                     model.selectedfoot.toString() == "left"
                                         ? "l"
                                         : "r",
-                                    // _selectedfoot == "left" ? "l" : "r",
                                     int.parse(_number.text),
                                     model.selectedgender.toString() == "male"
                                         ? "m"
                                         : "f",
-                                    model.selectedTag.toString()
-                                    // _selectedgender == "male" ? "m" : "f",
-                                    //   _selectedTag
-                                    );
+                                    model.selectedTag.toString());
 
-                                // _playerService.addplayer(
-                                //     //  widget.teamId,
-                                //     // img
-                                //     _selectedposition,
-                                //     _selectedsubposition,
-                                //     _firstname.text,
-                                //     _lastname.text,
-                                //     _selectedfoot == "left" ? "l" : "r",
-                                //     int.parse(_number.text),
-                                //     _selectedgender == "male" ? "m" : "f",
-                                //     _selectedTag);
                                 if (success) {
-                                  Navigator.pushNamed(
-                                      context, YourTeamAdminViewRoute);
+                                  Navigator.pushNamedAndRemoveUntil(context,
+                                      YourTeamAdminViewRoute, (route) => false);
                                 }
                               },
                             ),

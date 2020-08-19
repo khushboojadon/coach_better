@@ -1,3 +1,4 @@
+import 'package:coach_better/Routes/routing_constants.dart';
 import 'package:coach_better/widget/button.dart';
 import 'package:flutter/material.dart';
 
@@ -278,7 +279,10 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                           Button(
                                             'Ok',
                                             onPressed: () {
-                                              Navigator.pop(context);
+                                              Navigator.pushNamedAndRemoveUntil(
+                                                  context,
+                                                  CreateEventAdminViewRoute,
+                                                  (route) => false);
                                             },
                                           )
                                         ]),

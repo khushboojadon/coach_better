@@ -4,6 +4,7 @@ import 'package:coach_better/ViewModels/players_view_model.dart';
 import 'package:coach_better/models/players_model.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:coach_better/widget/button.dart';
+import 'package:coach_better/widget/drawer.dart';
 import 'package:flutter/material.dart';
 
 class YourTeamAdmin extends StatelessWidget {
@@ -19,7 +20,7 @@ class YourTeamAdmin extends StatelessWidget {
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        //  drawer: DrawerScreen(),
+        drawer: DrawerScreen(),
         body: SafeArea(
           child: Column(
             children: <Widget>[
@@ -150,7 +151,158 @@ class YourTeamAdmin extends StatelessWidget {
                   ? CircularProgressIndicator()
                   : model.player?.data == null
                       ? CircularProgressIndicator()
-                      : playerCard(model.player),
+                      // : playerCard(model.player),
+                      : Expanded(
+                          child: ListView.builder(
+                              itemCount: model.player.data.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 10,
+                                      right: 10,
+                                    ),
+                                    child: Card(
+                                      elevation: 5.0,
+                                      child: Container(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Row(children: <Widget>[
+                                              Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: Image.asset(
+                                                    'images/shirt.png',
+                                                    width: 30,
+                                                    height: 30,
+                                                  )),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                  left: 15.0,
+                                                ),
+                                                child: Text(
+                                                  model.player.data[index].id
+                                                          .toString() ??
+                                                      '',
+                                                  textAlign: TextAlign.center,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText2,
+                                                ),
+                                              ),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 15.0,
+                                                            top: 10.0),
+                                                    child: Text(
+                                                      model.player.data[index]
+                                                              .firstName ??
+                                                          '' +
+                                                              " " +
+                                                              model
+                                                                  .player
+                                                                  .data[index]
+                                                                  .lastName ??
+                                                          '',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyText2,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 15.0,
+                                                            top: 5,
+                                                            bottom: 10.0),
+                                                    child: Text(
+                                                      model.player.data[index]
+                                                              .position ??
+                                                          '',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyText1,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ]),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: IconButton(
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                onPressed: () {
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                            'Do you want to delete the player?',
+                                                            style: TextStyle(
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          content: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Button(
+                                                                  'No',
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                                Button(
+                                                                  'Yes',
+                                                                  onPressed:
+                                                                      () async {
+                                                                    await model.deleteplayer(model
+                                                                        .player
+                                                                        .data[
+                                                                            index]
+                                                                        .id);
+                                                                    Navigator.pushNamedAndRemoveUntil(
+                                                                        context,
+                                                                        YourTeamAdminViewRoute,
+                                                                        (route) =>
+                                                                            false);
+                                                                    //  Navigator.pushNamedAndRemoveUntil(context, YourTeamAdminViewRoute);
+                                                                  },
+                                                                )
+                                                              ]),
+                                                        );
+                                                      });
+                                                },
+                                                icon: Icon(
+                                                  Icons.delete,
+                                                  size: 30,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ));
+                              }),
+                        )
             ],
           ),
         ),
@@ -159,113 +311,7 @@ class YourTeamAdmin extends StatelessWidget {
     );
   }
 
-  Widget playerCard(Players player) {
-    return Expanded(
-      child: ListView.builder(
-          itemCount: player.data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                ),
-                child: Card(
-                  elevation: 5.0,
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Image.asset(
-                                'images/shirt.png',
-                                width: 30,
-                                height: 30,
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 15.0,
-                            ),
-                            child: Text(
-                              player.data[index].id.toString() ?? '',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 15.0, top: 10.0),
-                                child: Text(
-                                  player.data[index].firstName ??
-                                      '' + " " + player.data[index].lastName ??
-                                      '',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.bodyText2,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 15.0, top: 5, bottom: 10.0),
-                                child: Text(
-                                  player.data[index].position ?? '',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ]),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: IconButton(
-                            color: Theme.of(context).accentColor,
-                            onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                        'Do you want to delete the player?',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            color: Colors.black),
-                                      ),
-                                      content: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Button(
-                                              'No',
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                            ),
-                                            Button(
-                                              'Yes',
-                                              onPressed: () {
-                                                
-                                              },
-                                            )
-                                          ]),
-                                    );
-                                  });
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              size: 30,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ));
-          }),
-    );
-  }
+  // Widget playerCard(Players player) {
+  //   return
+  // }
 }

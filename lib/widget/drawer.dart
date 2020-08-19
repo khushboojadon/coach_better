@@ -1,4 +1,5 @@
 import 'package:coach_better/Routes/routing_constants.dart';
+import 'package:coach_better/views/member_journey/invitation_member.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -98,11 +99,11 @@ class _DrawerState extends State<DrawerScreen> {
                   new ListTile(
                     onTap: () {
                       //  Navigator.pushNamed(context, VideoRoomViewRoute);
-                      Navigator.pushNamed(context, HomeMemberViewRoute);
-                      // Navigator.push(
-                      //     context,
-                      //     new MaterialPageRoute(
-                      //         builder: (context) => new AdminRightTeams()));
+                      //  Navigator.pushNamed(context, HomeMemberViewRoute);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new InviteMember()));
                     },
                     title: Text('Member Journey',
                         style: Theme.of(context).textTheme.bodyText1),

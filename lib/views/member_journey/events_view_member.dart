@@ -648,24 +648,24 @@ class _TrainingDayState extends State<TrainingDay> {
       "location": "Herrliberg",
       "opponent": "FC Herrliberg 2"
     },
-    {
-      "date": "2020-08-16",
-      "meet_time": "06:00 PM",
-      "start_time": "6:30 PM",
-      "available": 12,
-      "not_available": 3,
-      "location": "Herrliberg",
-      "opponent": "FC Herrliberg 1"
-    },
-    {
-      "date": "2020-08-28",
-      "meet_time": "06:00 PM",
-      "start_time": "6:30 PM",
-      "available": 13,
-      "not_available": 3,
-      "location": "Mellingen",
-      "opponent": "FC Mellingen"
-    }
+    // {
+    //   "date": "2020-08-16",
+    //   "meet_time": "06:00 PM",
+    //   "start_time": "6:30 PM",
+    //   "available": 12,
+    //   "not_available": 3,
+    //   "location": "Herrliberg",
+    //   "opponent": "FC Herrliberg 1"
+    // },
+    // {
+    //   "date": "2020-08-28",
+    //   "meet_time": "06:00 PM",
+    //   "start_time": "6:30 PM",
+    //   "available": 13,
+    //   "not_available": 3,
+    //   "location": "Mellingen",
+    //   "opponent": "FC Mellingen"
+    // }
   ];
   @override
   Widget build(BuildContext context) {
@@ -1005,24 +1005,24 @@ class _MatchDayState extends State<MatchDay> {
       "location": "Herrliberg",
       "opponent": "FC Herrliberg 2"
     },
-    {
-      "date": "2020-08-16",
-      "meet_time": "06:00 PM",
-      "start_time": "6:30 PM",
-      "available": 12,
-      "not_available": 3,
-      "location": "Herrliberg",
-      "opponent": "FC Herrliberg 1"
-    },
-    {
-      "date": "2020-08-28",
-      "meet_time": "06:00 PM",
-      "start_time": "6:30 PM",
-      "available": 13,
-      "not_available": 3,
-      "location": "Mellingen",
-      "opponent": "FC Mellingen"
-    }
+    // {
+    //   "date": "2020-08-16",
+    //   "meet_time": "06:00 PM",
+    //   "start_time": "6:30 PM",
+    //   "available": 12,
+    //   "not_available": 3,
+    //   "location": "Herrliberg",
+    //   "opponent": "FC Herrliberg 1"
+    // },
+    // {
+    //   "date": "2020-08-28",
+    //   "meet_time": "06:00 PM",
+    //   "start_time": "6:30 PM",
+    //   "available": 13,
+    //   "not_available": 3,
+    //   "location": "Mellingen",
+    //   "opponent": "FC Mellingen"
+    // }
   ];
   @override
   Widget build(BuildContext context) {

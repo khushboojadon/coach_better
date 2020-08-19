@@ -1,3 +1,4 @@
+import 'package:coach_better/Routes/routing_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:coach_better/services/authentication.dart';
 
@@ -14,7 +15,7 @@ class _DrawerState extends State<MemberDrawerScreen> {
         color: Theme.of(context).primaryColor,
         child: ListView(
           children: <Widget>[
-           SizedBox(height:150),
+            SizedBox(height: 150),
             Container(
               height: MediaQuery.of(context).size.height,
               color: Colors.white,
@@ -32,9 +33,7 @@ class _DrawerState extends State<MemberDrawerScreen> {
                     ),
                   ),
                   new ListTile(
-                    onTap: () {
-              
-                    },
+                    onTap: () {},
                     title: Text('Your Profile',
                         style: Theme.of(context).textTheme.bodyText1),
                     leading: Icon(
@@ -44,8 +43,22 @@ class _DrawerState extends State<MemberDrawerScreen> {
                   ),
                   new ListTile(
                     onTap: () {
-                      
+                      //  Navigator.pushNamed(context, VideoRoomViewRoute);
+                      Navigator.pushNamed(context, HomeAdminViewRoute);
+                      // Navigator.push(
+                      //     context,
+                      //     new MaterialPageRoute(
+                      //         builder: (context) => new AdminRightTeams()));
                     },
+                    title: Text('Admin Journey',
+                        style: Theme.of(context).textTheme.bodyText1),
+                    leading: Icon(
+                      Icons.event,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                  new ListTile(
+                    onTap: () {},
                     title: Text('Switch Teams',
                         style: Theme.of(context).textTheme.bodyText1),
                     leading: Icon(
@@ -55,8 +68,7 @@ class _DrawerState extends State<MemberDrawerScreen> {
                   ),
                   new ListTile(
                     onTap: () {
-                    //  logout();
-                   
+                      //  logout();
                     },
                     title: Text('Logout',
                         style: Theme.of(context).textTheme.bodyText1),

@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:coach_better/models/user_model.dart';
 import 'package:coach_better/services/network.dart';
 import 'package:coach_better/utils/Urls.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication {

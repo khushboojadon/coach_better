@@ -1,10 +1,7 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:coach_better/models/players_model.dart';
 import 'package:coach_better/services/network.dart';
 import 'package:coach_better/utils/Urls.dart';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PlayerService {
@@ -80,7 +77,7 @@ class PlayerService {
   // }
 
   Future<bool> addplayer(
-      // var image,
+    //  var image,
       String position,
       String subposition,
       String firstname,
@@ -93,7 +90,7 @@ class PlayerService {
     int teamId = prefs.getInt('teamId');
     FormData requestbody = FormData.fromMap({
       "team_id": teamId,
-      // "image": await MultipartFile.fromFile(image.path, filename: image),
+     // "image": await MultipartFile.fromFile(image.path, filename: image),
       "position": position,
       "sub_position": subposition,
       "first_name": firstname,
@@ -103,10 +100,14 @@ class PlayerService {
       "gender": gender,
       "tag": tag
     });
-
     final response = await _network.dio.post(
       'http://localhost:8000/api/players/',
       data: requestbody,
+      options: Options(
+          followRedirects: true,
+          validateStatus: (status) {
+            return status <= 350;
+          }),
     );
     if (response.statusCode == 201) {
       return true;
