@@ -17,8 +17,8 @@ class TeamService {
   // }
   Future<Teams> fetchteams() async {
     final response = await _network.dio.get(GET_TEAMS_URL);
-    final baseresponse = response.data ;
-    return teamsFromJson(baseresponse as Map<String,dynamic>);
+    final baseresponse = response.data as Map<String, dynamic>;
+    return teamsFromJson(baseresponse);
   }
 
   // Future<Teams> fetchteams() async {

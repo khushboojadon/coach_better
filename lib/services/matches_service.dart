@@ -36,13 +36,7 @@ class MatchService {
     int seasonid = prefs.getInt('season_id');
     final response =
         await _network.dio.get("$GET_MATCHES_URL$seasonid/matches");
-    var baseresponse = response.data;
-    return matchesFromJson(baseresponse as Map<String, dynamic>);
-    // var mapresponse = _network.decodeResp(response);
-    // var matchJson = mapresponse['data'];
-    // for (var jsonmatch in matchJson) {
-    //   allmatches.add(MatchModel.fromJson(jsonmatch));
-    // }
-    // return allmatches;
+    var baseresponse = response.data as Map<String, dynamic>;
+    return matchesFromJson(baseresponse);
   }
 }

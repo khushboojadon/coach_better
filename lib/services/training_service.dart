@@ -34,6 +34,15 @@ class TrainingService {
   //   }
   //   return alltrainings;
   // }
+  Future<Training> fetchalltrainings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int seasonid = prefs.getInt('season_id');
+    final response =
+        await _network.dio.get("$GET_TRAININGS_URL$seasonid/trainings");
+    var basereponse = response.data as Map<String, dynamic>;
+    return trainingFromJson(basereponse);
+  }
+
   Future<Data> fetchtrainings() async {
     var response = await http
         .get('https://run.mocky.io/v3/e822bbe9-b6d7-422f-af8d-59baf591d9cd');
