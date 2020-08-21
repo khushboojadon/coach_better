@@ -112,6 +112,14 @@ class PlayersViewModel extends BaseModel {
     setstate(ViewState.Idle);
   }
 
+  int playercount;
+  getplayercount() async {
+    setstate(ViewState.Busy);
+    playercount = await _playerService.fetchPlayercount();
+    setstate(ViewState.Idle);
+    return playercount;
+  }
+
   Future<bool> deleteplayer(int playerId) async {
     setstate(ViewState.Busy);
     var success = _playerService.deletePlayer(playerId);

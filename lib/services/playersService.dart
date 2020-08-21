@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PlayerService {
   Network _network = new Network();
-
   // Future<List<Player>> fetchplayers() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   int teamId = prefs.getInt('teamId');
@@ -35,7 +34,7 @@ class PlayerService {
   //   return playersFromJson(baseResponse as Map<String, dynamic>);
   // }
 
-  Future<int> fetchPlayercount() async {
+   fetchPlayercount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int teamId = prefs.getInt('teamId');
     final response = await _network.dio.get("$GET_PLAYERS_URL$teamId/players");

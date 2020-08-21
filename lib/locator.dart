@@ -1,5 +1,6 @@
 import 'package:coach_better/ViewModels/admin_rights_view_model.dart';
 import 'package:coach_better/ViewModels/events_view_view_model.dart';
+import 'package:coach_better/ViewModels/home_admin_view_model.dart';
 import 'package:coach_better/ViewModels/login_view_model.dart';
 import 'package:coach_better/ViewModels/players_view_model.dart';
 import 'package:coach_better/ViewModels/teams_view_model.dart';
@@ -29,6 +30,7 @@ void setuplocator() {
   locator.registerFactory(() => TeamsViewModel());
   locator.registerFactory(() => PlayersViewModel());
   locator.registerFactory(() => EventsViewModel());
+   locator.registerFactory(() => HomeAdminViewModel());
   locator.registerFactory(() => AdminRightsViewModel());
 
 }

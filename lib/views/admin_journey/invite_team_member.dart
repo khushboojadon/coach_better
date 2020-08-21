@@ -24,11 +24,7 @@ class HomePage extends State<InviteTeamMember> {
               ),
             ],
           ),
-          // elevation: 0.0,
-          // bottomOpacity: 0.0,
         ),
-// navigation drawer
-
         body: Container(
           child: Column(children: <Widget>[
             Padding(
