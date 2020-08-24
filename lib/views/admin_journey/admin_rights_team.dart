@@ -101,7 +101,6 @@ class _AdminRightTeamsState extends State<AdminRightTeams> {
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         staff.data[index].firstName ??

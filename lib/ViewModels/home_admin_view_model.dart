@@ -21,7 +21,6 @@ class HomeAdminViewModel extends BaseModel {
   gettrainingcount() async {
     setstate(ViewState.Busy);
     trainingcount = await _trainingService.fetchtrainingscount();
-
     setstate(ViewState.Idle);
     return trainingcount;
   }
