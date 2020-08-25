@@ -25,7 +25,6 @@ class VideoService {
 
     final response = await _network.dio
         .get('$GET_VIDEOS_URL$teamid&season_id=$seasonid');
-    //  print(response.data);
     final baseResponse = response.data as Map<String, dynamic>;
     return videosFromJson(baseResponse);
   }

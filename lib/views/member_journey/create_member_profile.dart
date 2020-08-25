@@ -90,7 +90,7 @@ class HomePage extends State<CreateProfile> {
                       const EdgeInsets.only(left: 55.0, right: 55.0, top: 50.0),
                   child: Container(
                     child: TextFormField(
-                      style: TextStyle(fontSize: 16.0),
+                      style: Theme.of(context).textTheme.bodyText1,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         labelText: "Name",
@@ -147,7 +147,7 @@ class HomePage extends State<CreateProfile> {
                       const EdgeInsets.only(left: 55.0, right: 55.0, top: 10.0),
                   child: Container(
                     child: TextFormField(
-                      style: TextStyle(fontSize: 16.0),
+                      style: Theme.of(context).textTheme.bodyText1,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         labelText: "Surname",
@@ -204,7 +204,7 @@ class HomePage extends State<CreateProfile> {
                       const EdgeInsets.only(left: 55.0, right: 55.0, top: 10.0),
                   child: Container(
                     child: TextFormField(
-                      style: TextStyle(fontSize: 16.0),
+                      style: Theme.of(context).textTheme.bodyText1,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         labelText: "Email",
@@ -262,9 +262,11 @@ class HomePage extends State<CreateProfile> {
                       const EdgeInsets.only(left: 55.0, right: 55.0, top: 10.0),
                   child: Container(
                     child: TextFormField(
-                      style: TextStyle(fontSize: 16.0),
+                      style: Theme.of(context).textTheme.bodyText1,
+                      obscureText: true,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
+
                         labelText: "Password",
                         labelStyle: TextStyle(color: Colors.grey),
                         filled: true,
@@ -279,7 +281,7 @@ class HomePage extends State<CreateProfile> {
                               width: 2.0),
                         ),
 // hintText: 'Event Name',
-                        hintStyle: Theme.of(context).textTheme.body1,
+                        hintStyle: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:coach_better/ViewModels/admin_rights_view_model.dart';
+import 'package:coach_better/ViewModels/base_model.dart';
 import 'package:coach_better/models/staff_model.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:coach_better/widget/drawer.dart';
@@ -63,11 +64,13 @@ class _AdminRightTeamsState extends State<AdminRightTeams> {
                       ),
                     ),
                   ),
-                  model.staff == null
+                  model.state == ViewState.Busy
                       ? CircularProgressIndicator()
-                      : model.staff.data.isEmpty
-                          ? Center(child: Text('No Staff'))
-                          : listView(model.staff),
+                      : model.staff == null
+                          ? CircularProgressIndicator()
+                          : model.staff.data.isEmpty
+                              ? Center(child: Text('No Staff'))
+                              : listView(model.staff),
                 ],
               ),
             ),
