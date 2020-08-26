@@ -10,7 +10,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor:Colors.grey,
         appBar: AppBar(
           title: Column(
             children: <Widget>[
@@ -23,8 +22,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
             ],
           ),
         ),
-        // navigation drawer
-        //   drawer: DrawerScreen(),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
@@ -70,7 +67,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                             fillColor: Colors.white,
                             filled: true,
                             labelText: "Start Date",
-
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
@@ -81,7 +77,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                   color: Theme.of(context).primaryColor,
                                   width: 2.0),
                             ),
-                            //  hintText: 'Start Date',
                             hintStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
@@ -96,7 +91,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                             fillColor: Colors.white,
                             filled: true,
                             labelText: "End Date",
-
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
@@ -107,7 +101,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                   color: Theme.of(context).primaryColor,
                                   width: 2.0),
                             ),
-                            //   hintText: 'End Date',
                             hintStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
@@ -128,7 +121,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                             fillColor: Colors.white,
                             filled: true,
                             labelText: "Start Time",
-
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
@@ -139,7 +131,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                   color: Theme.of(context).primaryColor,
                                   width: 2.0),
                             ),
-                            //  hintText: 'Start Time',
                             hintStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
@@ -154,7 +145,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                             fillColor: Colors.white,
                             filled: true,
                             labelText: "End Time",
-
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
@@ -165,7 +155,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                   color: Theme.of(context).primaryColor,
                                   width: 2.0),
                             ),
-                            // hintText: 'End Time',
                             hintStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
@@ -183,7 +172,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                         fillColor: Colors.white,
                         filled: true,
                         labelText: "Location",
-
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context).primaryColor,
@@ -194,7 +182,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                               color: Theme.of(context).primaryColor,
                               width: 2.0),
                         ),
-                        //  hintText: 'Location',
                         hintStyle: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
@@ -210,7 +197,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                         fillColor: Colors.white,
                         filled: true,
                         labelText: "Description",
-
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context).primaryColor,
@@ -221,7 +207,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                               color: Theme.of(context).primaryColor,
                               width: 2.0),
                         ),
-                        //  hintText: 'Description',
                         hintStyle: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
@@ -270,12 +255,6 @@ class NewEventAdminState extends State<NewEventAdmin> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          // RaisedButton(
-                                          //   onPressed: () {
-                                          //     Navigator.pop(context);
-                                          //   },
-                                          //   child: Text('OK'),
-                                          // )
                                           Button(
                                             'Ok',
                                             onPressed: () {

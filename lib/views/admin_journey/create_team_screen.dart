@@ -30,8 +30,6 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
           ],
         ),
       ),
-      // navigation drawer
-//drawer: DrawerScreen(),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -65,35 +63,10 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
                             child: Button(
                               'Create Team',
                               onPressed: () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, SignUpAdminViewRoute, (route) => false);
-                                //  Navigator.of(context).pushAndRemoveUntil(
-                                //       MaterialPageRoute(
-                                //           builder: (context) =>
-                                //               SignupAdminScreen()),
-                                //       (Route<dynamic> route) => false);
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    SignUpAdminViewRoute, (route) => false);
                               },
                             ),
-                            // child: RaisedButton(
-                            //   shape: new RoundedRectangleBorder(
-                            //       borderRadius: new BorderRadius.circular(4.0),
-                            //       side: BorderSide(color: Colors.white60)),
-                            //   onPressed: () {
-                            //     Navigator.of(context).pushAndRemoveUntil(
-                            //         MaterialPageRoute(
-                            //             builder: (context) =>
-                            //                 SignupAdminScreen()),
-                            //         (Route<dynamic> route) => false);
-                            //   },
-                            //   color: Theme.of(context).accentColor,
-                            //   child: Padding(
-                            //     padding: const EdgeInsets.all(15.0),
-                            //     child: Text(
-                            //       'Create Team',
-                            //       style: Theme.of(context).textTheme.button,
-                            //     ),
-                            //   ),
-                            // ),
                           ),
                         ),
                       ],

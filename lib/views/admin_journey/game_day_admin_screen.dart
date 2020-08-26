@@ -11,7 +11,6 @@ class GameDayAdminState extends State<GameDayAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //  backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: Column(
             children: <Widget>[
@@ -282,12 +281,6 @@ class GameDayAdminState extends State<GameDayAdmin> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        // RaisedButton(
-                                        //   onPressed: () {
-                                        //     Navigator.pop(context);
-                                        //   },
-                                        //   child: Text('OK'),
-                                        // )
                                         Button(
                                           'Ok',
                                           onPressed: () {

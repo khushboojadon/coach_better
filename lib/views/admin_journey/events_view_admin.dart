@@ -575,6 +575,7 @@
 import 'package:coach_better/ViewModels/events_view_view_model.dart';
 import 'package:coach_better/services/matches_service.dart';
 import 'package:coach_better/services/training_service.dart';
+import 'package:coach_better/views/admin_journey/training_day_selection_admin.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -757,12 +758,26 @@ class _TrainingDayState extends State<TrainingDay> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
                                             children: <Widget>[
-                                              Icon(
-                                                Icons.edit,
-                                                size: 20.0,
-                                                color: Theme.of(context)
-                                                    .accentColor,
-                                              ),
+                                              IconButton(
+                                                  icon: Icon(
+                                                    Icons.edit,
+                                                    size: 20.0,
+                                                    color: Theme.of(context)
+                                                        .accentColor,
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                TrainingDaySelectionAdmin()));
+                                                  }),
+                                              // Icon(
+                                              //   Icons.edit,
+                                              //   size: 20.0,
+                                              //   color: Theme.of(context)
+                                              //       .accentColor,
+                                              // ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 5.0),
@@ -825,6 +840,7 @@ class _TrainingDayState extends State<TrainingDay> {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(height: 10),
                                     Container(
                                       // width:
                                       //     MediaQuery.of(context)
@@ -892,6 +908,7 @@ class _TrainingDayState extends State<TrainingDay> {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(height: 10),
                                     Container(
                                       child: Row(
                                         children: <Widget>[
@@ -988,7 +1005,6 @@ class MatchDay extends StatefulWidget {
 }
 
 class _MatchDayState extends State<MatchDay> {
-  MatchService _matchService = MatchService();
   final training = [
     {
       "date": "2020-08-08",
@@ -1079,235 +1095,159 @@ class _MatchDayState extends State<MatchDay> {
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Container(
-                                      // width:
-                                      //     MediaQuery.of(context)
-                                      //             .size
-                                      //             .width *
-                                      //         0.85,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Row(children: <Widget>[
-                                            Text('Match Day - ',
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text('Match Day - ',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                            )),
+                                        Text(
+                                          // snapshot.data[index]
+                                          //         .date ??
+                                          //     '',
+                                          training[index]['date'],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1,
+                                        ),
+                                        IconButton(
+                                            icon: Icon(
+                                              Icons.edit,
+                                              size: 20,
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TrainingDaySelectionAdmin()));
+                                            }),
+                                        Text(
+                                          'Edit',
+                                          style: TextStyle(
+                                              fontSize: 16.0,
+                                              color: Colors.grey),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Row(children: <Widget>[
+                                          Text(
+                                            'Meet Time - ',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            // '06:00 PM',
+                                            training[index]['meet_time'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1,
+                                          ),
+                                        ]),
+                                        Text('Start Time - ',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                            )),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 5.0),
+                                          child: Text(
+                                            // '06:30 PM',
+                                            training[index]['start_time'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Row(children: <Widget>[
+                                          Icon(
+                                            Icons.people,
+                                            color:
+                                                Theme.of(context).accentColor,
+                                          ),
+                                          Text(
+                                            // '16'
+                                            training[index]['available']
+                                                .toString(),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10.0),
+                                            child: Text('Available',
                                                 style: TextStyle(
-                                                  color: Colors.black,
+                                                  color: Theme.of(context)
+                                                      .accentColor,
                                                   fontSize: 16.0,
                                                 )),
-                                            Text(
-                                              // snapshot.data[index]
-                                              //         .date ??
-                                              //     '',
-                                              training[index]['date'],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1,
-                                            ),
-                                          ]),
-                                          SizedBox(width: 5.0),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.edit,
-                                                size: 20.0,
-                                                color: Theme.of(context)
-                                                    .accentColor,
-                                              ),
-                                              SizedBox(width: 5.0),
-                                              Text(
-                                                'Edit',
-                                                style: TextStyle(
-                                                    fontSize: 16.0,
-                                                    color: Colors.grey),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      // width:
-                                      //     MediaQuery.of(context)
-                                      //             .size
-                                      //             .width *
-                                      //         0.85,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Row(children: <Widget>[
-                                            Text(
-                                              'Meet Time - ',
+                                          ),
+                                        ]),
+                                        SizedBox(width: 5.0),
+                                        Icon(
+                                          Icons.people,
+                                          color: Theme.of(context).accentColor,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: Text(
+                                            // '2'
+                                            training[index]['not_available']
+                                                .toString(),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: Text('Not Available',
                                               style: TextStyle(
-                                                color: Colors.black,
+                                                color: Colors.red,
                                                 fontSize: 16.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              // '06:00 PM',
-                                              training[index]['meet_time'],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1,
-                                            ),
-                                          ]),
-                                          Row(children: <Widget>[
-                                            Text('Start Time - ',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16.0,
-                                                )),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5.0),
-                                              child: Text(
-                                                // '06:30 PM',
-                                                training[index]['start_time'],
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1,
-                                              ),
-                                            ),
-                                          ]),
-                                        ],
-                                      ),
+                                              )),
+                                        )
+                                      ],
                                     ),
-                                    Container(
-                                      // width:
-                                      //     MediaQuery.of(context)
-                                      //             .size
-                                      //             .width *
-                                      //         0.85,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Row(children: <Widget>[
-                                            Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Icon(
-                                                    Icons.people,
-                                                    color: Theme.of(context)
-                                                        .accentColor,
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 10.0),
-                                                    child: Text(
-                                                      // '16'
-                                                      training[index]
-                                                              ['available']
-                                                          .toString(),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 10.0),
-                                                    child: Text('Available',
-                                                        style: TextStyle(
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .accentColor,
-                                                          fontSize: 16.0,
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ]),
-                                          SizedBox(width: 5.0),
-                                          Container(
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.people,
-                                                  color: Theme.of(context)
-                                                      .accentColor,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10.0),
-                                                  child: Text(
-                                                    // '2'
-                                                    training[index]
-                                                            ['not_available']
-                                                        .toString(),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10.0),
-                                                  child: Text('Not Available',
-                                                      style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontSize: 16.0,
-                                                      )),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.place,
-                                                  color: Theme.of(context)
-                                                      .accentColor,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10.0),
-                                                  child: Text(
-                                                      training[index]
-                                                          ['location'],
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyText1),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          // SizedBox(width:10),
-                                          Container(
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.people,
-                                                  color: Theme.of(context)
-                                                      .accentColor,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10.0),
-                                                  child: Text(
-                                                      training[index]
-                                                          ['opponent'],
-                                                      style:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .bodyText1),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    SizedBox(height: 10),
+                                    Wrap(
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.place,
+                                          color: Theme.of(context).accentColor,
+                                        ),
+                                        Text(training[index]['location'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1),
+                                                Spacer(),
+                                        Icon(
+                                          Icons.people,
+                                          color: Theme.of(context).accentColor,
+                                        ),
+                                        Text(training[index]['opponent'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1),
+                                      ],
                                     ),
                                   ]),
                             )
