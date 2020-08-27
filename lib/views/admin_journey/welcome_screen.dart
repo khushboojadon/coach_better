@@ -71,7 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                         child: Button(
                           'Sign-Up',
                           onPressed: () {
-                            Navigator.pushNamed(context, "/sign_up");
+                            Navigator.pushNamed(context, SignUpViewRoute);
                           },
                         ),
                       ),

@@ -1,5 +1,6 @@
-
+import 'package:coach_better/Routes/routing_constants.dart';
 import 'package:coach_better/widget/button.dart';
+import 'package:coach_better/widget/text_field.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -15,7 +16,6 @@ class HomePage extends State<SignupScreen> {
 
   @override
   void dispose() {
-// Clean up the controller when the widget is disposed.
     emailController.dispose();
     passwordController.dispose();
     firstnameController.dispose();
@@ -23,10 +23,10 @@ class HomePage extends State<SignupScreen> {
     super.dispose();
   }
 
+  final _signupformKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //  backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: <Widget>[
@@ -59,182 +59,101 @@ class HomePage extends State<SignupScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
-              child: Container(
-                //    height: 55.0,
-                child: TextFormField(
-                  controller: emailController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter eamil';
-                    }
-                    return null;
-                  },
-                  style: Theme.of(context).textTheme.bodyText1,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    labelText: 'Email',
-                    labelStyle: Theme.of(context).textTheme.bodyText1,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 2.0),
+            Form(
+              key: _signupformKey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 55.0, right: 55.0, top: 20.0),
+                    child: Container(
+                      child: UserTextField(
+                          textController: emailController,
+                          hintText: 'Email',
+                          validator: (emailController) {
+                            if (emailController.isEmpty)
+                              return 'Please enter email';
+                            else
+                              return null;
+                          }),
                     ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
-              child: Container(
-                //    height: 55.0,
-                child: TextFormField(
-                  controller: firstnameController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter First Name';
-                    }
-                    return null;
-                  },
-                  style: Theme.of(context).textTheme.bodyText1,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    labelText: 'First Name',
-                    labelStyle: Theme.of(context).textTheme.bodyText1,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 55.0, right: 55.0, top: 20.0),
+                    child: UserTextField(
+                        textController: firstnameController,
+                        hintText: 'First Name',
+                        validator: (firstnameController) {
+                          if (firstnameController.isEmpty)
+                            return 'Please enter first name';
+                          else
+                            return null;
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 55.0, right: 55.0, top: 20.0),
+                    child: UserTextField(
+                        textController: firstnameController,
+                        hintText: 'Last Name',
+                        validator: (lastnameController) {
+                          if (lastnameController.isEmpty)
+                            return 'Please enter first name';
+                          else
+                            return null;
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 55.0, right: 55.0, top: 20.0),
+                    child: UserTextField(
+                      validator: (passwordController) {
+                        if (passwordController.isEmpty) {
+                          return 'Please enter Password';
+                        }
+                      },
+                      hintText: 'Password',
+                      textController: passwordController,
                     ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
-              child: Container(
-                //    height: 55.0,
-                child: TextFormField(
-                  controller: lastnameController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter First Name';
-                    }
-                    return null;
-                  },
-                  style: Theme.of(context).textTheme.bodyText1,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    labelText: 'Last Name',
-                    labelStyle: Theme.of(context).textTheme.bodyText1,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40.0, top: 20),
+                    child: Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: isChecked,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isChecked = value;
+                            });
+                          },
+                        ),
+                        Text(
+                          'Accept Terms & Conditions',
+                          style: TextStyle(
+                              fontSize: 16.0, color: Color(0xFF3ba374)),
+                        )
+                      ],
                     ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 55.0, right: 55.0, top: 20.0),
-              child: Container(
-                //    height: 55.0,
-                child: TextFormField(
-                  controller: passwordController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    return null;
-                  },
-                  style: Theme.of(context).textTheme.bodyText1,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    labelText: 'Password',
-                    labelStyle: Theme.of(context).textTheme.bodyText1,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 2.0),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 55, right: 55, top: 20),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 55.0,
+                      child: Button(
+                        'Sign-Up',
+                        onPressed: () {
+                          if (_signupformKey.currentState.validate()) {
+                            Navigator.pushNamed(context, LoginViewRoute);
+                          }
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40.0, top: 20),
-              child: Row(
-                children: <Widget>[
-                  Checkbox(
-                    value: isChecked,
-                    onChanged: (bool value) {
-                      setState(() {
-                        isChecked = value;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Accept Terms & Conditions',
-                    style: TextStyle(fontSize: 16.0, color: Color(0xFF3ba374)),
-                  )
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 55, right: 55, top: 20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 55.0,
-                child: Button(
-                  'Sign-Up',
-                  onPressed: () {
-                    // Navigator.of(context).pushAndRemoveUntil(
-                    //     MaterialPageRoute(
-                    //         builder: (context) => CreateTeamScreen()),
-                    //     (Route<dynamic> route) => false);
-                  },
-                ),
-                // child: RaisedButton(
-                //   shape: new RoundedRectangleBorder(
-                //       borderRadius: new BorderRadius.circular(4.0),
-                //       side: BorderSide(color: Colors.white)),
-                //   onPressed: () {
-                //     Navigator.of(context).pushAndRemoveUntil(
-                //         MaterialPageRoute(
-                //             builder: (context) => CreateTeamScreen()),
-                //         (Route<dynamic> route) => false);
-                //   },
-                //   color: Theme.of(context).accentColor,
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(15.0),
-                //     child: Text(
-                //       'Sign-Up',
-                //       style: Theme.of(context).textTheme.button,
-                //     ),
-                //   ),
-                // ),
               ),
             ),
           ]),

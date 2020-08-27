@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class UserTextField extends StatelessWidget {
-  final textController, hintText;
-  UserTextField({@required this.textController, @required this.hintText});
+  final textController, hintText, validator;
+  UserTextField(
+      {@required this.textController,
+      @required this.hintText,
+      @required this.validator});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textController,
+      validator: validator,
       style: Theme.of(context).textTheme.bodyText1,
       decoration: InputDecoration(
         fillColor: Colors.white,
