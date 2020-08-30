@@ -85,7 +85,6 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //  backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: Column(
             children: <Widget>[
@@ -98,371 +97,377 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
             ],
           ),
         ),
-        // navigation drawer
-        //drawer: DrawerScreen(),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
               width: MediaQuery.of(context).size.width,
-              child: Column(children: <Widget>[
-                SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Row(children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: TextFormField(
-                          controller: _firstTraining,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: 'First Training Date',
-                            labelStyle: Theme.of(context).textTheme.bodyText1,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextFormField(
-                          controller: _lastTraining,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Last Training Date",
-                            labelStyle: Theme.of(context).textTheme.bodyText1,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 55.0,
-                    child: FlatButton(
-                      onPressed: () {
-                        _showMultiSelect(context);
-                        //_pickTime();
-                      },
-                      color: Colors.white,
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        side: BorderSide(
-                            color: Theme.of(context).primaryColor, width: 2.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16.0),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'Select Training Days',
+              child: Form(
+                child: Column(children: <Widget>[
+                  SizedBox(height: 50),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Row(children: <Widget>[
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextFormField(
+                            controller: _firstTraining,
                             style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                // Padding(
-                //   padding:
-                //       const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
-                //   child: Container(
-                //     width: MediaQuery.of(context).size.width,
-                //     height: 55.0,
-                //     child: FlatButton(
-                //       onPressed: () {
-                //         _selectDate(context);
-                //       },
-                //       color: Colors.white,
-                //       shape: new RoundedRectangleBorder(
-                //         borderRadius: new BorderRadius.circular(5.0),
-                //         side: BorderSide(
-                //             color: Theme.of(context).primaryColor, width: 2.0),
-                //       ),
-                //       child: Padding(
-                //         padding: const EdgeInsets.only(top: 16.0),
-                //         child: Align(
-                //           alignment: Alignment.topLeft,
-                //           child: Text(
-                //             'Select Date',
-                //             style: Theme.of(context).textTheme.bodyText1,
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Container(
-                    //    height: 55.0,
-                    child: TextFormField(
-                      controller: _meetTime,
-                      style: Theme.of(context).textTheme.bodyText1,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        labelText: 'Meeting Time',
-                        labelStyle: Theme.of(context).textTheme.bodyText1,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 5.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 2.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Row(children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: TextFormField(
-                          controller: _startTime,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: 'Start Time',
-                            labelStyle: Theme.of(context).textTheme.bodyText1,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextFormField(
-                          controller: _endTime,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: 'End Time',
-                            labelStyle: Theme.of(context).textTheme.bodyText1,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: TextFormField(
-                              style: Theme.of(context).textTheme.bodyText1,
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                filled: true,
-                                labelText: 'Place',
-                                labelStyle:
-                                    Theme.of(context).textTheme.bodyText1,
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 5.0),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2.0),
-                                ),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'First Training Date',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
                               ),
                             ),
                           ),
                         ),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: TextFormField(
-                              controller: _place,
-                              style: Theme.of(context).textTheme.bodyText1,
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                filled: true,
-                                labelText: 'Home/Away',
-                                labelStyle:
-                                    Theme.of(context).textTheme.bodyText1,
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 5.0),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2.0),
-                                ),
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: TextFormField(
+                            controller: _lastTraining,
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Last Training Date",
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
                               ),
                             ),
                           ),
                         ),
-                      ]),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Container(
-                    child: TextFormField(
-                      controller: _type,
-                      style: Theme.of(context).textTheme.bodyText1,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        labelText: 'Training Type',
-                        labelStyle: Theme.of(context).textTheme.bodyText1,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 5.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                      ),
+                    ]),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 55.0,
+                      child: FlatButton(
+                        onPressed: () {
+                          _showMultiSelect(context);
+                          //_pickTime();
+                        },
+                        color: Colors.white,
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          side: BorderSide(
                               color: Theme.of(context).primaryColor,
                               width: 2.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              'Select Training Days',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
+                  // Padding(
+                  //   padding:
+                  //       const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
+                  //   child: Container(
+                  //     width: MediaQuery.of(context).size.width,
+                  //     height: 55.0,
+                  //     child: FlatButton(
+                  //       onPressed: () {
+                  //         _selectDate(context);
+                  //       },
+                  //       color: Colors.white,
+                  //       shape: new RoundedRectangleBorder(
+                  //         borderRadius: new BorderRadius.circular(5.0),
+                  //         side: BorderSide(
+                  //             color: Theme.of(context).primaryColor, width: 2.0),
+                  //       ),
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.only(top: 16.0),
+                  //         child: Align(
+                  //           alignment: Alignment.topLeft,
+                  //           child: Text(
+                  //             'Select Date',
+                  //             style: Theme.of(context).textTheme.bodyText1,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Container(
+                      //    height: 55.0,
+                      child: TextFormField(
+                        controller: _meetTime,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          labelText: 'Meeting Time',
+                          labelStyle: Theme.of(context).textTheme.bodyText1,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 5.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Row(children: <Widget>[
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextFormField(
+                            controller: _startTime,
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'Start Time',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: TextFormField(
+                            controller: _endTime,
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'End Time',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15.0),
-                          child: Icon(
-                            Icons.people,
-                            size: 30.0,
-                            color: Theme.of(context).accentColor,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: TextFormField(
+                                style: Theme.of(context).textTheme.bodyText1,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  labelText: 'Place',
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyText1,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 5.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: TextFormField(
+                                controller: _place,
+                                style: Theme.of(context).textTheme.bodyText1,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  labelText: 'Home/Away',
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyText1,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 5.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Container(
+                      child: TextFormField(
+                        controller: _type,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          labelText: 'Training Type',
+                          labelStyle: Theme.of(context).textTheme.bodyText1,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 5.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2.0),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 5,
-                            top: 20.0,
-                          ),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.80,
-                            height: 55.0,
-                            child: FlatButton.icon(
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 25.0,
-                              ),
-                              label: Text(
-                                'Create Event',
-                                style: Theme.of(context).textTheme.button,
-                              ),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(4.0),
-                                  side: BorderSide(color: Colors.white60)),
-                              onPressed: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: Text(
-                                          'Successfully added the training',
-                                          style: TextStyle(
-                                              fontSize: 16.0,
-                                              color: Colors.black),
-                                        ),
-                                        content: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              // RaisedButton(
-                                              //   onPressed: () {
-                                              //     Navigator.pop(context);
-                                              //   },
-                                              //   child: Text('OK'),
-                                              // )
-                                              Button(
-                                                'Ok',
-                                                onPressed: () {
-                                                  Navigator.pushNamedAndRemoveUntil(context, CreateEventAdminViewRoute, (route) => false);
-                                                },
-                                              )
-                                            ]),
-                                      );
-                                    });
-                              },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15.0),
+                            child: Icon(
+                              Icons.people,
+                              size: 30.0,
                               color: Theme.of(context).accentColor,
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 5,
+                              top: 20.0,
+                            ),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.80,
+                              height: 55.0,
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 25.0,
+                                ),
+                                label: Text(
+                                  'Create Event',
+                                  style: Theme.of(context).textTheme.button,
+                                ),
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(4.0),
+                                    side: BorderSide(color: Colors.white60)),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                            'Successfully added the training',
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                color: Colors.black),
+                                          ),
+                                          content: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                // RaisedButton(
+                                                //   onPressed: () {
+                                                //     Navigator.pop(context);
+                                                //   },
+                                                //   child: Text('OK'),
+                                                // )
+                                                Button(
+                                                  'Ok',
+                                                  onPressed: () {
+                                                    Navigator
+                                                        .pushNamedAndRemoveUntil(
+                                                            context,
+                                                            CreateEventAdminViewRoute,
+                                                            (route) => false);
+                                                  },
+                                                )
+                                              ]),
+                                        );
+                                      });
+                                },
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ),
         ));

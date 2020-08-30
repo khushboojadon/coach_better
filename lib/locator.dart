@@ -14,7 +14,6 @@ import 'package:coach_better/services/staff_service.dart';
 import 'package:coach_better/services/teamService.dart';
 import 'package:coach_better/services/training_service.dart';
 import 'package:coach_better/services/videos_service.dart';
-
 import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;
@@ -28,7 +27,7 @@ void setuplocator() {
   locator.registerLazySingleton(() => MatchService());
   locator.registerLazySingleton(() => TrainingService());
   locator.registerLazySingleton(() => VideoService());
-  locator.registerLazySingleton(() => LoginViewModel());
+  locator.registerFactory(() => LoginViewModel());
   locator.registerFactory(() => TeamsViewModel());
   locator.registerFactory(() => PlayersViewModel());
   locator.registerFactory(() => EventsViewModel());

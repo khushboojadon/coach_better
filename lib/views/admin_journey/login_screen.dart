@@ -69,11 +69,11 @@ class HomePage extends State<LoginScreen> {
                         textController: emailController,
                         hintText: 'Email',
                         validator: (emailController) {
-                          Pattern pattern =
-                              r'^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$';
-                          RegExp regex = new RegExp(pattern);
-                          if (!regex.hasMatch(emailController)) {
-                            return 'Invalid email';
+                          // Pattern pattern =
+                          //     r'^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$';
+                          // RegExp regex = new RegExp(pattern);
+                          if (emailController.isEmpty) {
+                            return 'Please enter email';
                           } else
                             return null;
                         },
@@ -125,6 +125,7 @@ class HomePage extends State<LoginScreen> {
                               if (_loginformKey.currentState.validate()) {
                                 await model.login(emailController.text,
                                     passwordController.text);
+                             
                                 Navigator.pushNamedAndRemoveUntil(
                                     context, TeamViewRoute, (route) => false);
                               }

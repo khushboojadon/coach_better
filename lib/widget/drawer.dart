@@ -1,4 +1,5 @@
 import 'package:coach_better/Routes/routing_constants.dart';
+import 'package:coach_better/utils/Constants.dart';
 import 'package:coach_better/views/member_journey/invitation_member.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,10 +54,6 @@ class _DrawerState extends State<DrawerScreen> {
                   new ListTile(
                     onTap: () {
                       Navigator.pushNamed(context, HomeAdminViewRoute);
-                      // Navigator.push(
-                      //     context,
-                      //     new MaterialPageRoute(
-                      //         builder: (context) => new YourProfile()));
                     },
                     title: Text('Home',
                         style: Theme.of(context).textTheme.bodyText1),
@@ -68,10 +65,6 @@ class _DrawerState extends State<DrawerScreen> {
                   new ListTile(
                     onTap: () {
                       Navigator.pushNamed(context, YourProfileViewRoute);
-                      // Navigator.push(
-                      //     context,
-                      //     new MaterialPageRoute(
-                      //         builder: (context) => new YourProfile()));
                     },
                     title: Text('Your Profile',
                         style: Theme.of(context).textTheme.bodyText1),
@@ -82,12 +75,7 @@ class _DrawerState extends State<DrawerScreen> {
                   ),
                   new ListTile(
                     onTap: () {
-                      //  Navigator.pushNamed(context, VideoRoomViewRoute);
                       Navigator.pushNamed(context, AdminRightsTeamViewRoute);
-                      // Navigator.push(
-                      //     context,
-                      //     new MaterialPageRoute(
-                      //         builder: (context) => new AdminRightTeams()));
                     },
                     title: Text('Admin Rights Team',
                         style: Theme.of(context).textTheme.bodyText1),
@@ -116,10 +104,6 @@ class _DrawerState extends State<DrawerScreen> {
                     onTap: () {
                       Navigator.pushNamedAndRemoveUntil(
                           context, TeamViewRoute, (route) => false);
-                      // Navigator.push(
-                      //     context,
-                      //     new MaterialPageRoute(
-                      //         builder: (context) => new TeamScreen()));
                     },
                     title: Text('Switch Teams',
                         style: Theme.of(context).textTheme.bodyText1),
@@ -130,12 +114,10 @@ class _DrawerState extends State<DrawerScreen> {
                   ),
                   new ListTile(
                     onTap: () {
-                      //  logout();
-                      Navigator.pushNamed(context, WelcomeViewRoute);
-                      // Navigator.of(context).pushAndRemoveUntil(
-                      //     MaterialPageRoute(
-                      //         builder: (context) => WelcomeScreen()),
-                      //     (Route<dynamic> route) => false);
+                      Constants.pref.setBool('loggedIn', false);
+                      //    logout();
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, WelcomeViewRoute, (route) => false);
                     },
                     title: Text('Logout',
                         style: Theme.of(context).textTheme.bodyText1),

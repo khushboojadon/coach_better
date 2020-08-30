@@ -49,147 +49,149 @@ class ChangePassword extends StatelessWidget {
       child: Card(
         elevation: 5,
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: <Widget>[
-            ScrollOnExpand(
-              scrollOnExpand: true,
-              scrollOnCollapse: false,
-              child: ExpandablePanel(
-                theme: const ExpandableThemeData(
-                  headerAlignment: ExpandablePanelHeaderAlignment.center,
-                  tapBodyToCollapse: true,
+        child: Form(
+                  child: Column(
+            children: <Widget>[
+              ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToCollapse: true,
+                  ),
+                  header: Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
+                      child: Text(
+                        "Change Password",
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
+                      )),
+                  expanded: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          //   height: 50.0,
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Current Password",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "New Password",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            //controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Confirm Password",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, top: 20.0, bottom: 20.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 55.0,
+                          child: Button(
+                            'Save Changes',
+                            onPressed: () {},
+                          ),
+                          // child: RaisedButton(
+                          //   child: Text(
+                          //     'Save Changes',
+                          //     style: Theme.of(context).textTheme.body2,
+                          //   ),
+                          //   shape: new RoundedRectangleBorder(
+                          //       borderRadius: new BorderRadius.circular(4.0),
+                          //       side: BorderSide(color: Colors.white60)),
+                          //   onPressed: () {},
+                          //   color: Color(0xFF3ba374),
+                          // ),
+                        ),
+                      )
+                    ],
+                  ),
+                  builder: (_, collapsed, expanded) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                      child: Expandable(
+                        collapsed: collapsed,
+                        expanded: expanded,
+                        theme: const ExpandableThemeData(crossFadePoint: 0),
+                      ),
+                    );
+                  },
                 ),
-                header: Padding(
-                    padding:
-                        EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
-                    child: Text(
-                      "Change Password",
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.bold),
-                    )),
-                expanded: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        //   height: 50.0,
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Current Password",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "New Password",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          //controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Confirm Password",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, top: 20.0, bottom: 20.0),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 55.0,
-                        child: Button(
-                          'Save Changes',
-                          onPressed: () {},
-                        ),
-                        // child: RaisedButton(
-                        //   child: Text(
-                        //     'Save Changes',
-                        //     style: Theme.of(context).textTheme.body2,
-                        //   ),
-                        //   shape: new RoundedRectangleBorder(
-                        //       borderRadius: new BorderRadius.circular(4.0),
-                        //       side: BorderSide(color: Colors.white60)),
-                        //   onPressed: () {},
-                        //   color: Color(0xFF3ba374),
-                        // ),
-                      ),
-                    )
-                  ],
-                ),
-                builder: (_, collapsed, expanded) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    child: Expandable(
-                      collapsed: collapsed,
-                      expanded: expanded,
-                      theme: const ExpandableThemeData(crossFadePoint: 0),
-                    ),
-                  );
-                },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ));
@@ -205,147 +207,149 @@ class ChangeEmail extends StatelessWidget {
       child: Card(
         elevation: 5,
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: <Widget>[
-            ScrollOnExpand(
-              scrollOnExpand: true,
-              scrollOnCollapse: false,
-              child: ExpandablePanel(
-                theme: const ExpandableThemeData(
-                  headerAlignment: ExpandablePanelHeaderAlignment.center,
-                  tapBodyToCollapse: true,
+        child: Form(
+                  child: Column(
+            children: <Widget>[
+              ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToCollapse: true,
+                  ),
+                  header: Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
+                      child: Text(
+                        "Change Email",
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
+                      )),
+                  expanded: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          // height: 55.0,
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Current Email",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "New Email",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            //controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Confirm Email",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, top: 20.0, bottom: 20.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 55.0,
+                          child: Button(
+                            'Save Changes',
+                            onPressed: () {},
+                          ),
+                          // child: RaisedButton(
+                          //   child: Text(
+                          //     'Save Changes',
+                          //     style: Theme.of(context).textTheme.button,
+                          //   ),
+                          //   shape: new RoundedRectangleBorder(
+                          //       borderRadius: new BorderRadius.circular(4.0),
+                          //       side: BorderSide(color: Colors.white60)),
+                          //   onPressed: () {},
+                          //   color: Color(0xFF3ba374),
+                          // ),
+                        ),
+                      )
+                    ],
+                  ),
+                  builder: (_, collapsed, expanded) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                      child: Expandable(
+                        collapsed: collapsed,
+                        expanded: expanded,
+                        theme: const ExpandableThemeData(crossFadePoint: 0),
+                      ),
+                    );
+                  },
                 ),
-                header: Padding(
-                    padding:
-                        EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
-                    child: Text(
-                      "Change Email",
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.bold),
-                    )),
-                expanded: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        // height: 55.0,
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Current Email",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "New Email",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          //controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Confirm Email",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, top: 20.0, bottom: 20.0),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 55.0,
-                        child: Button(
-                          'Save Changes',
-                          onPressed: () {},
-                        ),
-                        // child: RaisedButton(
-                        //   child: Text(
-                        //     'Save Changes',
-                        //     style: Theme.of(context).textTheme.button,
-                        //   ),
-                        //   shape: new RoundedRectangleBorder(
-                        //       borderRadius: new BorderRadius.circular(4.0),
-                        //       side: BorderSide(color: Colors.white60)),
-                        //   onPressed: () {},
-                        //   color: Color(0xFF3ba374),
-                        // ),
-                      ),
-                    )
-                  ],
-                ),
-                builder: (_, collapsed, expanded) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    child: Expandable(
-                      collapsed: collapsed,
-                      expanded: expanded,
-                      theme: const ExpandableThemeData(crossFadePoint: 0),
-                    ),
-                  );
-                },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ));
@@ -361,146 +365,148 @@ class ChangeTeamName extends StatelessWidget {
       child: Card(
         elevation: 5,
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: <Widget>[
-            ScrollOnExpand(
-              scrollOnExpand: true,
-              scrollOnCollapse: false,
-              child: ExpandablePanel(
-                theme: const ExpandableThemeData(
-                  headerAlignment: ExpandablePanelHeaderAlignment.center,
-                  tapBodyToCollapse: true,
+        child: Form(
+                  child: Column(
+            children: <Widget>[
+              ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToCollapse: true,
+                  ),
+                  header: Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
+                      child: Text(
+                        "Change Team Name",
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
+                      )),
+                  expanded: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Current Team Name",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            // controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "New Team Name",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, right: 10.0, top: 20.0),
+                        child: Container(
+                          child: TextFormField(
+                            //controller: _email,
+                            style: TextStyle(fontSize: 16.0),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: "Confirm Team Name",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                              hintStyle: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, top: 20.0, bottom: 20.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 55.0,
+                          child: Button(
+                            'Save Changes',
+                            onPressed: () {},
+                          ),
+                          // child: RaisedButton(
+                          //   child: Text(
+                          //     'Save Changes',
+                          //     style: Theme.of(context).textTheme.body2,
+                          //   ),
+                          //   shape: new RoundedRectangleBorder(
+                          //       borderRadius: new BorderRadius.circular(4.0),
+                          //       side: BorderSide(color: Colors.white60)),
+                          //   onPressed: () {},
+                          //   color: Color(0xFF3ba374),
+                          // ),
+                        ),
+                      )
+                    ],
+                  ),
+                  builder: (_, collapsed, expanded) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                      child: Expandable(
+                        collapsed: collapsed,
+                        expanded: expanded,
+                        theme: const ExpandableThemeData(crossFadePoint: 0),
+                      ),
+                    );
+                  },
                 ),
-                header: Padding(
-                    padding:
-                        EdgeInsets.only(left: 25.0, top: 20.0, bottom: 10.0),
-                    child: Text(
-                      "Change Team Name",
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.bold),
-                    )),
-                expanded: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Current Team Name",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          // controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "New Team Name",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 20.0),
-                      child: Container(
-                        child: TextFormField(
-                          //controller: _email,
-                          style: TextStyle(fontSize: 16.0),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            labelText: "Confirm Team Name",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 5.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2.0),
-                            ),
-                            hintStyle: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, top: 20.0, bottom: 20.0),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 55.0,
-                        child: Button(
-                          'Save Changes',
-                          onPressed: () {},
-                        ),
-                        // child: RaisedButton(
-                        //   child: Text(
-                        //     'Save Changes',
-                        //     style: Theme.of(context).textTheme.body2,
-                        //   ),
-                        //   shape: new RoundedRectangleBorder(
-                        //       borderRadius: new BorderRadius.circular(4.0),
-                        //       side: BorderSide(color: Colors.white60)),
-                        //   onPressed: () {},
-                        //   color: Color(0xFF3ba374),
-                        // ),
-                      ),
-                    )
-                  ],
-                ),
-                builder: (_, collapsed, expanded) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    child: Expandable(
-                      collapsed: collapsed,
-                      expanded: expanded,
-                      theme: const ExpandableThemeData(crossFadePoint: 0),
-                    ),
-                  );
-                },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ));
