@@ -7,7 +7,9 @@ class GameDayAdmin extends StatefulWidget {
 }
 
 class GameDayAdminState extends State<GameDayAdmin> {
-  int group = 1;
+  final _gameformKey = GlobalKey<FormState>();
+  TextEditingController _opponent = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,29 +30,33 @@ class GameDayAdminState extends State<GameDayAdmin> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Form(
+              key: _gameformKey,
               child: Column(children: <Widget>[
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0),
                   child: Container(
-                      child: TextFormField(
-                        style: Theme.of(context).textTheme.bodyText1,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          labelText: 'Opponent',
-                          labelStyle: Theme.of(context).textTheme.bodyText1,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor, width: 5.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor, width: 2.0),
-                          ),
+                    child: TextFormField(
+                      controller: _opponent,
+                      style: Theme.of(context).textTheme.bodyText1,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        labelText: 'Opponent',
+                        labelStyle: Theme.of(context).textTheme.bodyText1,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                              width: 5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                              width: 2.0),
                         ),
                       ),
-                      ),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding:

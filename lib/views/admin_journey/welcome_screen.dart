@@ -10,18 +10,18 @@ class WelcomeScreen extends StatelessWidget {
       key: Key("Scaffold test"),
       body: SafeArea(
         child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
           child: Column(children: <Widget>[
             FadeAnimation(
                 1,
                 Container(
-                    margin: EdgeInsets.only(left: 16.0, right: 16.0, top: 50.0),
+                    margin:
+                        EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
                     child: Image.asset('images/logo-dark.png'))),
             FadeAnimation(
                 2,
                 Container(
-                  margin: EdgeInsets.only(top: 20.0),
                   child: Column(
                     children: <Widget>[
                       Text(
@@ -29,18 +29,17 @@ class WelcomeScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline5,
                         softWrap: true,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          'one place',
-                          style: Theme.of(context).textTheme.headline5,
-                          softWrap: true,
-                        ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
+                      Text(
+                        'one place',
+                        style: Theme.of(context).textTheme.headline5,
+                        softWrap: true,
                       ),
                     ],
                   ),
                 )),
-
+            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
             // login button
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,32 +47,28 @@ class WelcomeScreen extends StatelessWidget {
                 FadeAnimation(
                     3,
                     Container(
-                      margin: EdgeInsets.only(left: 55, right: 55, top: 30),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 55.0,
-                        child: Button(
-                          'Login',
-                          onPressed: () {
-                            Navigator.pushNamed(context, LoginViewRoute);
-                          },
-                        ),
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      child: Button(
+                        'Login',
+                        onPressed: () {
+                          Navigator.pushNamed(context, LoginViewRoute);
+                        },
                       ),
                     )),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 // signup button
                 FadeAnimation(
                     4,
                     Container(
-                      margin: EdgeInsets.only(left: 55.0, right: 55.0, top: 30),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 55.0,
-                        child: Button(
-                          'Sign-Up',
-                          onPressed: () {
-                            Navigator.pushNamed(context, SignUpViewRoute);
-                          },
-                        ),
+                      margin: EdgeInsets.only(top: 30),
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      child: Button(
+                        'Sign-Up',
+                        onPressed: () {
+                          Navigator.pushNamed(context, SignUpViewRoute);
+                        },
                       ),
                     )),
               ],

@@ -3,7 +3,6 @@ import 'package:coach_better/ViewModels/base_model.dart';
 import 'package:coach_better/ViewModels/players_view_model.dart';
 import 'package:coach_better/views/base_view.dart';
 import 'package:coach_better/widget/button.dart';
-import 'package:coach_better/widget/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -154,19 +153,72 @@ class _AddPlayerState extends State<AddPlayer> {
                     child: Row(children: <Widget>[
                       // firstname textfield
                       Flexible(
-                        child: Padding(
+                        // child: Padding(
+                        //   padding: const EdgeInsets.only(right: 10.0),
+                        //   child: UserTextField(
+                        //       textController: _firstname,
+                        //       hintText: 'First Name'),
+                        // ),
+                          child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
-                          child: UserTextField(
-                              textController: _firstname,
-                              hintText: 'First Name'),
+                          child: TextFormField(
+                            controller: _firstname,
+                            validator: (_firstname) {
+                              if (_firstname.isEmpty)
+                                return "Please enter FirstName";
+                              else
+                                return "null";
+                            },
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'First Name',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       // lastname textfield
                       Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: UserTextField(
-                              textController: _lastname, hintText: 'Last Name'),
+                         child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextFormField(
+                            controller: _lastname,
+                            validator: (_lastname) {
+                              if (_lastname.isEmpty)
+                                return "Please enter LastName";
+                              else
+                                return "null";
+                            },
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'Last Name',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ]),
@@ -177,19 +229,66 @@ class _AddPlayerState extends State<AddPlayer> {
                     child: Row(children: <Widget>[
                       // firstname textfield
                       Flexible(
-                        child: Padding(
+                           child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
-                          child: UserTextField(
-                              textController: _number,
-                              hintText: 'Shirt Number'),
+                          child: TextFormField(
+                            controller: _number,
+                            validator: (_number) {
+                              if (_number.isEmpty)
+                                return "Please enter Number";
+                              else
+                                return "null";
+                            },
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'Shirt Number',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       // lastname textfield
                       Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: UserTextField(
-                              textController: _phone, hintText: 'Phone no.'),
+                            child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextFormField(
+                            controller: _phone,
+                            validator: (_phone) {
+                              if (_phone.isEmpty)
+                                return "Please enter Phone";
+                              else
+                                return "null";
+                            },
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'Phone',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ]),
@@ -198,8 +297,35 @@ class _AddPlayerState extends State<AddPlayer> {
                   // number textfield
                   Container(
                     margin: EdgeInsets.only(left: 20.0, right: 20.0),
-                    child: UserTextField(
-                        textController: _email, hintText: 'Email'),
+                       child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextFormField(
+                            controller: _email,
+                            validator: (_email) {
+                              if (_email.isEmpty)
+                                return "Please enter Email";
+                              else
+                                return "null";
+                            },
+                            style: Theme.of(context).textTheme.bodyText1,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              labelText: 'Email',
+                              labelStyle: Theme.of(context).textTheme.bodyText1,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2.0),
+                              ),
+                            ),
+                          ),
+                        ),
                   ),
                   SizedBox(height: 20),
                   // dropdown list of tag
@@ -408,7 +534,6 @@ class _AddPlayerState extends State<AddPlayer> {
                                         ? "m"
                                         : "f",
                                     model.selectedTag.toString());
-
                                 if (success) {
                                   Navigator.pushNamedAndRemoveUntil(context,
                                       YourTeamAdminViewRoute, (route) => false);

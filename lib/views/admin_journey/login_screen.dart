@@ -10,11 +10,9 @@ class LoginScreen extends StatefulWidget {
   HomePage createState() => HomePage();
 }
 
-//text: 'cGFzc3dvcmQ'
-//text: 'admin@pixel-plus.ch'
 class HomePage extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController(text: 'admin@pixel-plus.ch');
+  final passwordController = TextEditingController(text: 'cGFzc3dvcmQ');
 
   @override
   void dispose() {
@@ -33,105 +31,95 @@ class HomePage extends State<LoginScreen> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 50),
-              child: Image.asset('images/logo-dark.png'),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'All your team events in',
-                    style: Theme.of(context).textTheme.headline5,
-                    softWrap: true,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
-                    child: Text(
-                      'one place',
-                      style: Theme.of(context).textTheme.headline5,
-                      softWrap: true,
-                    ),
-                  ),
-                ],
-              ),
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
+                child: Image.asset('images/logo-dark.png')),
+            Column(
+              children: <Widget>[
+                Text(
+                  'All your team events in',
+                  style: Theme.of(context).textTheme.headline5,
+                  softWrap: true,
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                Text(
+                  'one place',
+                  style: Theme.of(context).textTheme.headline5,
+                  softWrap: true,
+                ),
+              ],
             ),
             Form(
               key: _loginformKey,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 55.0, right: 55.0, top: 20.0),
-                    child: Container(
-                      child: UserTextField(
-                        textController: emailController,
-                        hintText: 'Email',
-                        validator: (emailController) {
-                          // Pattern pattern =
-                          //     r'^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$';
-                          // RegExp regex = new RegExp(pattern);
-                          if (emailController.isEmpty) {
-                            return 'Please enter email';
-                          } else
-                            return null;
-                        },
-                      ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    child: UserTextField(
+                      textController: emailController,
+                      hintText: 'Email',
+                      validator: (emailController) {
+                        // Pattern pattern =
+                        //     r'^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$';
+                        // RegExp regex = new RegExp(pattern);
+                        if (emailController.isEmpty) {
+                          return 'Please enter email';
+                        } else
+                          return null;
+                      },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 55.0, right: 55.0, top: 20.0),
-                    child: Container(
-                      child: TextFormField(
-                        obscureText: true,
-                        controller: passwordController,
-                        validator: (passwordController) {
-                          if (passwordController.isEmpty) {
-                            return 'Please enter password';
-                          }
-                          return null;
-                        },
-                        style: Theme.of(context).textTheme.bodyText1,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          labelText: 'Password',
-                          labelStyle: Theme.of(context).textTheme.bodyText1,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 5.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2.0),
-                          ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: passwordController,
+                      validator: (passwordController) {
+                        if (passwordController.isEmpty) {
+                          return 'Please enter password';
+                        }
+                        return null;
+                      },
+                      style: Theme.of(context).textTheme.bodyText1,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Password',
+                        labelStyle: Theme.of(context).textTheme.bodyText1,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                              width: 5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                              width: 2.0),
                         ),
                       ),
                     ),
                   ),
                   model.state == ViewState.Busy
                       ? CircularProgressIndicator()
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                              left: 55, right: 55, top: 30),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: 55.0,
-                            child: Button('Login', onPressed: () async {
-                              if (_loginformKey.currentState.validate()) {
-                                await model.login(emailController.text,
-                                    passwordController.text);
-                             
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, TeamViewRoute, (route) => false);
-                              }
-                            }),
-                          ),
-                        )
+                      : SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.78,
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    child: Button('Login', onPressed: () async {
+                      if (_loginformKey.currentState.validate()) {
+                        await model.login(
+                            emailController.text, passwordController.text);
+
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, TeamViewRoute, (route) => false);
+                      }
+                    }),
+                  )
                 ],
               ),
             ),

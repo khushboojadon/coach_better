@@ -82,6 +82,7 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
   TextEditingController _endTime = TextEditingController();
   TextEditingController _place = TextEditingController();
   TextEditingController _type = TextEditingController();
+  final _trainingformKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,6 +103,7 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: Form(
+                key: _trainingformKey,
                 child: Column(children: <Widget>[
                   SizedBox(height: 50),
                   Padding(
@@ -112,6 +114,12 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
                           padding: const EdgeInsets.only(right: 10.0),
                           child: TextFormField(
                             controller: _firstTraining,
+                            validator: (_firstTraining) {
+                              if (_firstTraining.isEmpty)
+                                return "Please enter FirstTraining";
+                              else
+                                return "null";
+                            },
                             style: Theme.of(context).textTheme.bodyText1,
                             decoration: InputDecoration(
                               fillColor: Colors.white,
@@ -137,6 +145,12 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
                           padding: const EdgeInsets.only(left: 10.0),
                           child: TextFormField(
                             controller: _lastTraining,
+                            validator: (_lastTraining) {
+                              if (_lastTraining.isEmpty)
+                                return "Please enter LastTraining";
+                              else
+                                return "null";
+                            },
                             style: Theme.of(context).textTheme.bodyText1,
                             decoration: InputDecoration(
                               fillColor: Colors.white,
@@ -367,6 +381,12 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
                     child: Container(
                       child: TextFormField(
                         controller: _type,
+                        validator: (_type) {
+                          if (_type.isEmpty)
+                            return "Please enter Type";
+                          else
+                            return "null";
+                        },
                         style: Theme.of(context).textTheme.bodyText1,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -424,39 +444,37 @@ class TrainingDayAdminState extends State<TrainingDayAdmin> {
                                         new BorderRadius.circular(4.0),
                                     side: BorderSide(color: Colors.white60)),
                                 onPressed: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: Text(
-                                            'Successfully added the training',
-                                            style: TextStyle(
-                                                fontSize: 16.0,
-                                                color: Colors.black),
-                                          ),
-                                          content: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                // RaisedButton(
-                                                //   onPressed: () {
-                                                //     Navigator.pop(context);
-                                                //   },
-                                                //   child: Text('OK'),
-                                                // )
-                                                Button(
-                                                  'Ok',
-                                                  onPressed: () {
-                                                    Navigator
-                                                        .pushNamedAndRemoveUntil(
-                                                            context,
-                                                            CreateEventAdminViewRoute,
-                                                            (route) => false);
-                                                  },
-                                                )
-                                              ]),
-                                        );
-                                      });
+                                  if (_trainingformKey.currentState
+                                      .validate()) {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            title: Text(
+                                              'Successfully added the training',
+                                              style: TextStyle(
+                                                  fontSize: 16.0,
+                                                  color: Colors.black),
+                                            ),
+                                            content: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Button(
+                                                    'Ok',
+                                                    onPressed: () {
+                                                      Navigator
+                                                          .pushNamedAndRemoveUntil(
+                                                              context,
+                                                              CreateEventAdminViewRoute,
+                                                              (route) => false);
+                                                    },
+                                                  )
+                                                ]),
+                                          );
+                                        });
+                                  }
+                                  ;
                                 },
                                 color: Theme.of(context).accentColor,
                               ),
